@@ -1,0 +1,38 @@
+{
+  "name": "todobackend",
+  "version": "1.0.0",
+  "description": "This is backend for TODO project.",
+  "main": "handler.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm run test",
+    "lint": "eslint . --fix",
+    "off": "serverless offline",
+    "local": "serverless offline start --skipCacheInvalidation",
+    "dev": "serverless deploy"
+  },
+  "keywords": [
+    "todo",
+    "backend",
+    "serverless"
+  ],
+  "author": "Carlos Osorio",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.13",
+    "morgan": "^1.9.1",
+    "serverless-http": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "jest": "^24.9.0",
+    "serverless-offline": "^5.12.1",
+    "serverless-plugin-include-dependencies": "^4.0.0"
+  }
+}

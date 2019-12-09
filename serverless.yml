@@ -1,0 +1,40 @@
+service: hacybeyker
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-include-dependencies
+
+custom:
+  stage: dev
+  mongo: "mongodb+srv://administrador:Password*123@portfoliocluster-mqayx.mongodb.net/test?retryWrites=true&w=majority"
+  version: "v1"
+  region: "us-east-1"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  profile: DesaUser
+  stage: ${opt:stage, self:custom.stage}
+  region: ${opt:region, self:custom.region}
+  environment:
+    mongo: ${self:custom.mongo}
+    version: ${self:custom.version}
+    stage: ${opt:stage, self:custom.stage}
+
+package:
+  include:
+    - components/**
+    - network/**
+    - handler.js
+    - package.js
+  exclude:
+    - package-lock.json
+    - node_modules/**
+    - test/**
+
+functions:
+  portfolio:
+    handler: handler.todo
+    events:
+      - http: ANY /
+      - http: ANY {proxy+}
